@@ -1,0 +1,11 @@
+version: '3.3'
+
+services:  
+  db:
+    image: postgres:10
+    restart: always
+    environment: 
+        - POSTGRES_USER=docker
+        - POSTGRES_PASSWORD=dockerpass
+        - POSTGRES_DB=test
+    ports: ["5432:5432"]

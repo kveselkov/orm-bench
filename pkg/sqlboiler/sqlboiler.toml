@@ -1,0 +1,7 @@
+[psql]
+  dbname  = "test"
+  host    = "localhost"
+  port    = 5432
+  user    = "docker"
+  pass    = "dockerpass"
+  sslmode = "disable"
