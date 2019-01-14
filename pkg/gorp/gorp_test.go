@@ -2,6 +2,7 @@ package gorp
 
 import (
 	"database/sql"
+	"github.com/kostozyb/orm-bench/internal/config"
 	"strconv"
 	"testing"
 
@@ -9,8 +10,8 @@ import (
 	"gopkg.in/gorp.v1"
 )
 
-func getUserDB() (*UserDB, error) {
-	db, err := sql.Open("postgres", "host=localhost user=docker dbname=test password=dockerpass sslmode=disable")
+func getUserDB(driver, cs string) (*UserDB, error) {
+	db, err := sql.Open(driver, cs)
 	if err != nil {
 		return nil, err
 	}
@@ -27,7 +28,9 @@ func getUserDB() (*UserDB, error) {
 func BenchmarkUserDB_Fetch(b *testing.B) {
 	for i := 1; i <= 100000; i *= 10 {
 		b.Run(strconv.Itoa(i), func(b *testing.B) {
-			u, err := getUserDB()
+			c := config.Config{}
+
+			u, err := getUserDB(c.GetDriver(), c.GetConnectionString())
 			if err != nil {
 				b.Fatal(err)
 			}

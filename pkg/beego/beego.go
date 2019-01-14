@@ -2,6 +2,7 @@ package beego
 
 import (
 	"github.com/astaxie/beego/orm"
+	"github.com/kostozyb/orm-bench/internal/config"
 )
 
 func init() {
@@ -13,12 +14,14 @@ func init() {
 	// register model
 	orm.RegisterModel(new(Users))
 
-	err = orm.RegisterDataBase("default", "postgres", "host=localhost user=docker dbname=test password=dockerpass sslmode=disable", 30)
+	c := config.Config{}
+
+	err = orm.RegisterDataBase("default", c.GetDriver(), c.GetConnectionString(), 30)
 	if err != nil {
 		panic(err)
 	}
 
-	err = orm.RegisterDataBase("test", "postgres", "host=localhost user=docker dbname=test password=dockerpass sslmode=disable", 30)
+	err = orm.RegisterDataBase("test", c.GetDriver(), c.GetConnectionString(), 30)
 	if err != nil {
 		panic(err)
 	}
