@@ -1,6 +1,6 @@
 package config
 
-type Config struct {}
+type Config struct{}
 
 func (Config) GetConnectionString() string {
 	return "host=localhost user=docker dbname=test password=dockerpass sslmode=disable"

@@ -2,6 +2,7 @@ package main
 
 import (
 	"database/sql"
+
 	"github.com/golang-migrate/migrate"
 	"github.com/golang-migrate/migrate/database/postgres"
 	"github.com/kostozyb/orm-bench/internal/config"
@@ -40,7 +41,7 @@ func applyMigrations(driver, cs, dbName string) error {
 	return nil
 }
 
-func main ()  {
+func main() {
 	c := config.Config{}
 
 	if err := applyMigrations(c.GetDriver(), c.GetConnectionString(), c.GetDB()); err != nil {
