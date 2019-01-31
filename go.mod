@@ -3,6 +3,7 @@ module github.com/kostozyb/orm-bench
 require (
 	github.com/Masterminds/squirrel v0.0.0-20190107164353-fa735ea14f09 // indirect
 	github.com/astaxie/beego v1.11.1
+	github.com/go-xorm/core v0.6.0
 	github.com/go-xorm/xorm v0.7.1
 	github.com/gofrs/uuid v3.2.0+incompatible // indirect
 	github.com/golang-migrate/migrate v3.5.4+incompatible
